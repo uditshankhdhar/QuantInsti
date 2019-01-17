@@ -1,0 +1,76 @@
+package com.qi.testcases;
+
+
+import java.util.Set;
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.Test;
+
+import com.qi.base.TestQuant;
+
+public class LoginQiTest extends TestQuant {
+
+	@Test(priority=1)
+	public void loginAsUser() throws InterruptedException{
+		
+		driver.findElement(By.xpath(OR.getProperty("LoginBtn"))).click();
+
+		driver.findElement(By.xpath(OR.getProperty("Reminder"))).click();
+		
+		String currentWindow = driver.getWindowHandle();
+		String lastWindow = null;
+		 Set<String> handles = driver.getWindowHandles();
+		    for (String aux : handles) {
+		        lastWindow = aux;
+		    }
+		    driver.switchTo().window(lastWindow);
+		    
+		
+		/*for (String winHandle : driver.getWindowHandles()) {
+		    driver.switchTo().window(winHandle); 
+		}*/
+		
+		WebElement uname=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("UserName"))));
+
+		uname.sendKeys("sachin.p+dummy1@quantinsti.com");		
+	
+		driver.findElement(By.xpath(OR.getProperty("Password"))).sendKeys("sachintest");
+		driver.findElement(By.xpath(OR.getProperty("SignBtn"))).click();
+		System.out.println("1");
+		
+	}
+	
+	
+	@Test(priority=2)
+	public void ModifySSO(){
+		String currentWindow = driver.getWindowHandle();
+		System.out.println("2");
+		/*for (String ParentwinHandler : driver.getWindowHandles()) {
+		    driver.switchTo().window(ParentwinHandler); 
+		}*/
+		
+		/*String ParentwinHandler = driver.getWindowHandle();
+		driver.switchTo().window(ParentwinHandler);*/
+		System.out.println("driver=" + driver); 
+		WebElement PLink= driver.findElement(By.xpath(OR.getProperty("ProfileIcon")));
+		PLink.click();
+
+		System.out.println("3");
+		driver.findElement(By.xpath(OR.getProperty("ProfileLink"))).click();
+		System.out.println("4");
+		
+
+/*		for (String winHandle : driver.getWindowHandles()) {
+		    driver.switchTo().window(winHandle); 
+		}*/
+		
+		String EmailId= driver.findElement(By.xpath(OR.getProperty("EmailTBox"))).getText();		
+		System.out.println("EmailId");
+
+		
+		
+	}
+
+}

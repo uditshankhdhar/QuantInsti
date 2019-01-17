@@ -1,0 +1,42 @@
+package com.qi.testcases;
+
+import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.testng.annotations.Test;
+
+import com.qi.base.TestQuant;
+
+public class ModifySSO extends TestQuant {
+
+	
+	@Test(priority=2)
+	public void ModifyDetails(){
+		
+		try {
+		/*for (String ParentwinHandler : driver.getWindowHandles()) {
+		    driver.switchTo().window(ParentwinHandler); 
+		}*/
+		
+		/*String ParentwinHandler = driver.getWindowHandle();
+		driver.switchTo().window(ParentwinHandler);*/
+		WebElement pIcon=wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath(OR.getProperty("ProfileIcon"))));
+		pIcon.click();		
+
+		driver.findElement(By.xpath(OR.getProperty("ProfileLink"))).click();
+
+/*		for (String winHandle : driver.getWindowHandles()) {
+		    driver.switchTo().window(winHandle); 
+		}*/
+		
+		String EmailId= driver.findElement(By.xpath(OR.getProperty("EmailTBox"))).getText();		
+		System.out.println("EmailId");
+
+	} catch ( NullPointerException e ) {
+	    Assert.assertTrue( "There was an error in modify SSO.", false );
+	}
+		
+	}
+
+}

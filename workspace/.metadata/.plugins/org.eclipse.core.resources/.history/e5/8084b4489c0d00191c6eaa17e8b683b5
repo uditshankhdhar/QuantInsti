@@ -1,0 +1,3 @@
+browser=chrome
+testsiteurl=https://quantra.quantinsti.com/
+implicit.wait=40

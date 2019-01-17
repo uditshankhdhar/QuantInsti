@@ -1,0 +1,4 @@
+browser=chrome
+testsiteurl=https://quantra.quantinsti.com/
+implicit.wait=30
+loginwind=https://accounts.quantinsti.com/account?platform=quantra&isPopUp=true&isLogin=true&redirect=https%3A%2F%2Fquantra.quantinsti.com%2FloginRedirectSSO%2F%3FredirectUrl%3D%252F
